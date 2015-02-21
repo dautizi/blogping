@@ -85,4 +85,23 @@ public class WeblogUtilTest {
 		Assert.assertEquals("difference in seconds expected: ", differenceInSeconds, seconds);
     }
 
+    @Test
+    public void decode_url_with_parameters() throws URIException {
+		String name = "DanieleAutiziBlog7";
+		String url = "http://www.danieleautizi.com/marta?blogtv=12&streaming=true"; // VALID URL
+        
+		url = URIUtil.encodeWithinQuery(url);
+		url = WeblogUtil.decodeUrl(url);
+		
+        Weblog wbInput = new Weblog();
+        wbInput.setName(name);
+        wbInput.setUrl(url);
+        wbInput.setInsertDate(new Date());
+        
+		HashMap<String, Object> prop = SingletonInitializer.getInstance().getProperties();
+		WeblogResponse wbResponse = WeblogUtil.validate(wbInput, ActionType.SAVE, prop);
+				
+		Assert.assertEquals("Action expected: ", "save", wbResponse.getAction());
+        Assert.assertEquals("Success expected: ", "true", wbResponse.getSuccess());
+    }
 }
