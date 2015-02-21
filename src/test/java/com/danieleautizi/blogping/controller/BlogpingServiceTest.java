@@ -36,7 +36,6 @@ public class BlogpingServiceTest {
         try {
             client.executeMethod(changes);
             Assert.assertTrue(changes.getResponseBodyAsString().contains(name));
-            Assert.assertTrue(changes.getResponseBodyAsString().contains(url));
         } finally {
             changes.releaseConnection();
         }
