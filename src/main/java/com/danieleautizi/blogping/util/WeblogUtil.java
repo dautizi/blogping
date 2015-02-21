@@ -1,13 +1,3 @@
-/*
- * WeblogUtil
- *
- * Version info
- *
- * @author d.autizi
- * @version 1.0
- * @since 10-02-2015
- */
-
 package com.danieleautizi.blogping.util;
 
 import java.math.BigDecimal;
@@ -27,11 +17,14 @@ import java.util.regex.Pattern;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.httpclient.URIException;
+import org.apache.commons.httpclient.util.URIUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.routines.UrlValidator;
 
+import com.danieleautizi.blogping.controller.WeblogException;
 import com.danieleautizi.blogping.model.Weblog;
 import com.danieleautizi.blogping.model.WeblogResponse;
 
@@ -349,6 +342,32 @@ public class WeblogUtil implements Constraint {
 			 */
 		}
 		return isValid;
+	}
+	
+	/**
+	 * Decodes url using URIUtil class
+	 * @param url to decode 
+	 * @return decoded url
+	 * @throws URIException
+	 */
+	public static String decodeUrl(String url) {
+		HashMap<String, Object> prop = SingletonInitializer.getInstance().getProperties();
+		
+		try {
+			return URIUtil.decode(url);
+		} catch (URIException uie) {
+			logger.error("url decoding error: " + uie);
+			
+			// SET XML RESPONSE
+			WeblogResponse wResponse = new WeblogResponse();
+			wResponse.setAction(ActionType.GET.getActionName());
+			wResponse.setSuccess("false");
+			wResponse.setMessage((String) prop.get(Constraint.URL_WRONG_ENCODING));
+			wResponse.setStatus(Response.Status.BAD_REQUEST.getStatusCode());
+			wResponse.setCode((String) prop.get(Constraint.URL_WRONG_ENCODING_CODE));
+			
+			throw new WeblogException(Response.Status.BAD_REQUEST, wResponse);
+		}
 	}
 	
 	/**
