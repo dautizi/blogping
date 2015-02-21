@@ -18,8 +18,8 @@ public class BlogpingServiceTest {
 	
     @Test
     public void send_update_and_verify_response() throws IOException {
-        String name = "DanieleAutiziBlog";
-        String url = "http://www.danieleautizi.com";
+        String name = "DanieleAutiziBlogEncoded";
+        String url = "http://www.danieleautizi.com/marta?webtv=4&streaming=true";
 
         GetMethod ping = new GetMethod(wsBaseUrl + "blogping/pingSiteForm?name=" + name
             + "&url=" + URIUtil.encodeWithinQuery(url));
