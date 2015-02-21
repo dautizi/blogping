@@ -35,6 +35,12 @@
       		<artifactId>commons-httpclient</artifactId>
       		<version>3.1</version>
     	</dependency>
+    	
+    	<dependency>
+	        <groupId>org.mortbay.jetty</groupId>
+	        <artifactId>jsp-2.1</artifactId>
+	        <version>6.0.0</version>
+		</dependency>
     
     	<!-- jersey -->
     	<dependency>
@@ -113,6 +119,7 @@
             			<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
 		              		<port>8079</port>
 		              		<maxIdleTime>60000</maxIdleTime>
+		              		<acceptors>5</acceptors>
             			</connector>
           			</connectors>
           			<scanIntervalSeconds>5</scanIntervalSeconds>
