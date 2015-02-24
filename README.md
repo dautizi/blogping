@@ -18,13 +18,15 @@ Blogping is a maven project that can be imported by an IDE, following through Ec
 
 Ping blog in get:
 
-```http://localhost:8079/blogping/pingSite?name=djBlog&url=http%3A%2F%2Fdanieleautizi.com%2FblogExample
+```
+http://localhost:8079/blogping/pingSite?name=djBlog&url=http%3A%2F%2Fdanieleautizi.com%2FblogExample
 "Thanks for the ping."
 ```
 
 Ping blog in post using form addon/plugin:
 
-```http://localhost:8079/blogping/pingSite
+```
+http://localhost:8079/blogping/pingSite
 
 Form params: 
   name=djBlog
