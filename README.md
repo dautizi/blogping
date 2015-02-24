@@ -8,7 +8,7 @@ API methods available:
 ## Import & Run
 Blogping is a maven project that can be imported by an IDE, following through Eclipse:
 
-* Import: ` File --> Import --> Maven --> Existing Maven Projects in Workspace -> Select root directory -> Done `
+* Import: ` File -> Import -> Maven -> Existing Maven Projects in Workspace -> Select root directory -> Done `
 * Install [Jetty plugin](http://eclipse-jetty.github.io/installation.html) for Eclipse  
 * Run project: through IDE or command line `maven jetty:run`
 * Use web service directly on browser [http://localhost:8079/blogping/changes.xml](http://localhost:8079/blogping/changes.xml)
