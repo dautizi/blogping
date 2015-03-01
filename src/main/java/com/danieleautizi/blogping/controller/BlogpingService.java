@@ -119,10 +119,9 @@ public class BlogpingService implements Constraint {
     	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     	@Produces({MediaType.TEXT_HTML, MediaType.APPLICATION_XML})
 	public Response doPostWeblogForm(@FormParam("name") String name, 
-			@FormParam("url") String url,
-			@FormParam("changesURL") String changesURL) throws WeblogException {
+			@FormParam("url") String url) throws WeblogException {
 		
-		logger.info("pingSiteForm post params: Name=" + name + ", url=" + url + ", changesURL="+ changesURL);
+		logger.info("pingSiteForm post params: Name=" + name + ", url=" + url);
 		
 		// DECODE URL
 		url = WeblogUtil.decodeUrl(url);
