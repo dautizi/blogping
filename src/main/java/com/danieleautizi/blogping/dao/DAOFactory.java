@@ -10,7 +10,7 @@ package com.danieleautizi.blogping.dao;
  */
 public class DAOFactory {
 
-	public static WeblogDAO getWeblogDAO(String type) { 
+    public static WeblogDAO getWeblogDAO(String type) { 
         if (type.equalsIgnoreCase("hashdb")) {
             return HashDB.getConcurrentHashMapInstance();
         } else {
